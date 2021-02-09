@@ -12,7 +12,7 @@ public class BaseTest {
                 beerStyle(BeerStyleEnum.ALE).
                 id(UUID.randomUUID()).
                 createdDate(OffsetDateTime.now()).
-                lastModifiedDate(OffsetDateTime.now()).price(new BigDecimal("12.33")).upc(46374631321L)
+                lastModifiedDate(OffsetDateTime.now()).price(new BigDecimal("12.33")).upc("46374631321")
                 .build();
     }
 }

@@ -3,6 +3,7 @@ package com.roy.msscbeerservice.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roy.msscbeerservice.domain.Beer;
 import com.roy.msscbeerservice.repositories.BeerRepository;
+import com.roy.msscbeerservice.services.BeerService;
 import com.roy.msscbeerservice.web.model.BeerDto;
 import com.roy.msscbeerservice.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
@@ -45,11 +46,11 @@ class BeerControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    BeerRepository beerRepository;
+    BeerService beerService;
 
     @Test
     void getBeerById() throws Exception {
-        given(beerRepository.findById(any(UUID.class))).willReturn(Optional.of(Beer.builder().build()));
+        given(beerService.getById(any(UUID.class))).willReturn(getValidBeerDto());
 
         mockMvc.perform(get("/api/v1/beer/{beerId}", UUID.randomUUID().toString())
                 .param("isCold", "yes")
@@ -76,6 +77,8 @@ class BeerControllerTest {
     void saveBeer() throws Exception {
         BeerDto beerDto = getValidBeerDto();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
+
+        given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
 
         ConstrainedFields fields = new ConstrainedFields(BeerDto.class);
         mockMvc.perform(post("/api/v1/beer")
@@ -113,7 +116,7 @@ class BeerControllerTest {
                 .beerName("My Beer")
                 .beerStyle(BeerStyleEnum.IPA)
                 .price(new BigDecimal("2.99"))
-                .upc(133546531L)
+                .upc("133546531")
                 .build();
     }
 
