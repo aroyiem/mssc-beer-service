@@ -1,8 +1,6 @@
 package com.roy.msscbeerservice.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.roy.msscbeerservice.domain.Beer;
-import com.roy.msscbeerservice.repositories.BeerRepository;
 import com.roy.msscbeerservice.services.BeerService;
 import com.roy.msscbeerservice.web.model.BeerDto;
 import com.roy.msscbeerservice.web.model.BeerStyleEnum;
@@ -21,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -50,7 +47,7 @@ class BeerControllerTest {
 
     @Test
     void getBeerById() throws Exception {
-        given(beerService.getById(any(UUID.class))).willReturn(getValidBeerDto());
+        given(beerService.getById(any(UUID.class), any())).willReturn(getValidBeerDto());
 
         mockMvc.perform(get("/api/v1/beer/{beerId}", UUID.randomUUID().toString())
                 .param("isCold", "yes")
