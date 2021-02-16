@@ -2,12 +2,17 @@ package com.roy.msscbeerservice.bootstrap;
 
 import com.roy.msscbeerservice.domain.Beer;
 import com.roy.msscbeerservice.repositories.BeerRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-//@Component
+@Component
+@RequiredArgsConstructor
 public class BeerLoader implements CommandLineRunner {
 
     public static final String BEER_1_UPC = "0631234200036";
@@ -16,11 +21,8 @@ public class BeerLoader implements CommandLineRunner {
 
     private final BeerRepository beerRepository;
 
-    public BeerLoader(BeerRepository beerRepository) {
-        this.beerRepository = beerRepository;
-    }
-
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         loadBeerObjects();
     }
@@ -53,7 +55,6 @@ public class BeerLoader implements CommandLineRunner {
                     .upc(BEER_3_UPC)
                     .price(new BigDecimal("11.95"))
                     .build());
-
         }
     }
 }
