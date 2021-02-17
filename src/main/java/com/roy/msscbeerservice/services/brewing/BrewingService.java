@@ -1,4 +1,4 @@
-package com.roy.msscbeerservice.services;
+package com.roy.msscbeerservice.services.brewing;
 
 import com.roy.msscbeerservice.config.JMSConfig;
 import com.roy.msscbeerservice.domain.Beer;
@@ -34,7 +34,7 @@ public class BrewingService {
             log.debug("Inventory is: " + invQOH);
 
             if(beer.getMinOnHand() >= invQOH) {
-                jmsTemplate.convertAndSend(JMSConfig.BREWING_REQUEST, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
+                jmsTemplate.convertAndSend(JMSConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }
         });
     }

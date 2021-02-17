@@ -2,9 +2,9 @@ package com.roy.msscbeerservice.events;
 
 import com.roy.msscbeerservice.web.model.BeerDto;
 
-public class InventoryEvent extends BeerEvent {
+public class NewInventoryEvent extends BeerEvent {
 
-    public InventoryEvent(BeerDto beerDto) {
+    public NewInventoryEvent(BeerDto beerDto) {
         super(beerDto);
     }
 }
