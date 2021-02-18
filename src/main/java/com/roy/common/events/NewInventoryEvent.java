@@ -1,12 +1,12 @@
-package com.roy.msscbeerservice.events;
+package com.roy.common.events;
 
 import com.roy.msscbeerservice.web.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class BrewBeerEvent extends BeerEvent {
+public class NewInventoryEvent extends BeerEvent {
 
-    public BrewBeerEvent(BeerDto beerDto) {
+    public NewInventoryEvent(BeerDto beerDto) {
         super(beerDto);
     }
 }
