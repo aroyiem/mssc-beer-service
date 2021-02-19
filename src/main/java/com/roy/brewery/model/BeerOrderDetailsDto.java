@@ -38,5 +38,5 @@ public class BeerOrderDetailsDto {
     private String beerStyle;
     private BigDecimal price;
 
-
+    private Integer quantityAllocated;
 }
