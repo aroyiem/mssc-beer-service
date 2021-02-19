@@ -1,6 +1,6 @@
-package com.roy.common.events;
+package com.roy.brewery.model.events;
 
-import com.roy.msscbeerservice.web.model.BeerDto;
+import com.roy.brewery.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

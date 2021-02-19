@@ -1,5 +1,8 @@
 package com.roy.msscbeerservice.web.model;
 
+import com.roy.brewery.model.BeerDto;
+import com.roy.brewery.model.BeerStyleEnum;
+
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
