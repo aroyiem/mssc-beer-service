@@ -105,4 +105,11 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>aroy-snapshot</id>
+            <url>https://aroy.jfrog.io/artifactory/aroy-snapshot/</url>
+        </repository>
+    </repositories>
+
 </project>
